@@ -1,0 +1,116 @@
+<h2 mat-dialog-title class="mb-1">鍋燒麵點餐表單</h2>
+<mat-dialog-content class="pt-3">
+  <div class="container">
+    <form class="example-form" [formGroup]="orderForm">
+      <div class="row">
+        <mat-form-field class="name col-6" appearance="outline">
+          <mat-label>取餐者姓名</mat-label>
+          <input matInput type="text" placeholder="訂餐與取餐者姓名可不同" required name="" formControlName="name">
+        </mat-form-field>
+
+        <mat-form-field class="phone col-6" appearance="outline">
+          <mat-label>手機</mat-label>
+          <input matInput type="tel" placeholder="取餐者手機號碼" value="" required name=" phone" formControlName="phone">
+        </mat-form-field>
+      </div>
+
+
+
+      <div class="row my-3">
+        <mat-form-field appearance="outline" class="col-6">
+          <mat-label>請挑選口味</mat-label>
+          <mat-select formControlName="animalControl" required>
+            <mat-option>--</mat-option>
+            <mat-option *ngFor="let animal of animals" [value]="animal.name">
+              {{animal.name}}
+            </mat-option>
+          </mat-select>
+          <mat-error *ngIf="animalControlName.hasError('required')">必選!</mat-error>
+          <mat-hint
+            class="position-absolute  start-50 translate-middle-x"><i>{{animalControlName.value?.sound}}</i></mat-hint>
+        </mat-form-field>
+
+        <mat-form-field appearance="outline" class="col-6">
+          <mat-label>請挑選麵體</mat-label>
+          <mat-select formControlName="noodolControl" required>
+            <mat-option>--</mat-option>
+            <mat-option *ngFor="let noodol of noodols" [value]="noodol.name2">
+              {{noodol.name2}}
+            </mat-option>
+          </mat-select>
+          <mat-error *ngIf="noodolControl.hasError('required')">必選!</mat-error>
+          <mat-hint
+            class="position-absolute  start-50 translate-middle-x"><i>{{noodolControl.value?.sound2}}</i></mat-hint>
+        </mat-form-field>
+
+      </div>
+      <div class="row">
+        <mat-form-field appearance="outline" class="col-6">
+          <mat-label>選擇日期</mat-label>
+          <input matInput [matDatepicker]="datepicker" required formControlName="date">
+          <mat-datepicker #datepicker />
+          <mat-datepicker-toggle [for]="datepicker" matSuffix />
+        </mat-form-field>
+
+        <mat-form-field appearance="outline" class="col-6">
+          <mat-label>選擇時間</mat-label>
+          <input formControlName="time" matInput [matTimepicker]="timepicker" required>
+          <mat-timepicker interval="15min" #timepicker />
+          <mat-timepicker-toggle [for]="timepicker" matSuffix />
+          <mat-hint>選擇時間+30分為取餐時間</mat-hint>
+        </mat-form-field>
+        <!-- <p>目前時間: {{valuet}}</p> -->
+      </div>
+
+      <div class="col-6">
+        <mat-label class=""><b>是否需要餐具:</b></mat-label>
+        <mat-radio-group aria-label="Select an option" required class="" formControlName="cutlery">
+          <mat-radio-button value="yes">是</mat-radio-button>
+          <mat-radio-button value="no">否</mat-radio-button>
+        </mat-radio-group>
+      </div>
+
+      <mat-form-field class="example-full-width col-12" appearance="outline">
+        <mat-label>備註</mat-label>
+        <textarea matInput placeholder="例如不要沙茶" formControlName="remark"></textarea>
+      </mat-form-field>
+
+    </form>
+  </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</mat-dialog-content>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<mat-dialog-actions>
+  <button mat-button mat-dialog-close class="btn btn-Success" (click)="confirm()">確認</button>
+  <button mat-button mat-dialog-close class="btn btn-Secondary" (click)="close()">關閉</button>
+</mat-dialog-actions>

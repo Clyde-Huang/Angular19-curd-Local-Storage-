@@ -1,0 +1,95 @@
+<mat-toolbar class="bg-info">
+  <button mat-icon-button class="example-icon" aria-label="Example icon-button with menu icon">
+    <mat-icon>menu</mat-icon>
+  </button>
+  <span>訂餐系統</span>
+  <span class="example-spacer"></span>
+  <button mat-raised-button color="primary" (click)="openDialog()">點餐</button>
+  <button mat-icon-button class="example-icon favorite-icon" aria-label="Example icon-button with heart icon">
+    <mat-icon>favorite</mat-icon>
+  </button>
+  <button mat-icon-button class="example-icon" aria-label="Example icon-button with share icon">
+    <mat-icon>share</mat-icon>
+  </button>
+</mat-toolbar>
+
+<h2 class="m-4"><B>歷史訂單:</B></h2>
+
+
+
+<div class="box px-5">
+  <table mat-table [dataSource]="dataList" class="mat-elevation-z8 ">
+    <ng-container matColumnDef="name">
+      <th mat-header-cell *matHeaderCellDef> 姓名 </th>
+      <td mat-cell *matCellDef="let element"> {{element.name}} </td>
+    </ng-container>
+
+    <ng-container matColumnDef="phone">
+      <th mat-header-cell *matHeaderCellDef> 手機 </th>
+      <td mat-cell *matCellDef="let element"> {{element.phone}} </td>
+    </ng-container>
+
+    <ng-container matColumnDef="animalControl">
+      <th mat-header-cell *matHeaderCellDef> 口味 </th>
+      <td mat-cell *matCellDef="let element"> {{element.animalControl}} </td>
+    </ng-container>
+
+    <ng-container matColumnDef="noodolControl">
+      <th mat-header-cell *matHeaderCellDef> 麵體 </th>
+      <td mat-cell *matCellDef="let element"> {{element.noodolControl}} </td>
+    </ng-container>
+
+    <ng-container matColumnDef="date">
+      <th mat-header-cell *matHeaderCellDef> 日期 </th>
+      <td mat-cell *matCellDef="let element"> {{element.date}} </td>
+    </ng-container>
+
+    <ng-container matColumnDef="time">
+      <th mat-header-cell *matHeaderCellDef> 時間 </th>
+      <td mat-cell *matCellDef="let element"> {{element.time}} </td>
+    </ng-container>
+
+    <ng-container matColumnDef="cutlery">
+      <th mat-header-cell *matHeaderCellDef> 餐具 </th>
+      <td mat-cell *matCellDef="let element"> {{element.cutlery}} </td>
+    </ng-container>
+
+    <ng-container matColumnDef="remark">
+      <th mat-header-cell *matHeaderCellDef> 備註 </th>
+      <td mat-cell *matCellDef="let element"> {{element.remark}} </td>
+    </ng-container>
+
+    <ng-container matColumnDef="price">
+      <th mat-header-cell *matHeaderCellDef> 金額 </th>
+      <td mat-cell *matCellDef="let element">
+        {{ getPrice(element) }} 元
+      </td>
+    </ng-container>
+
+
+
+
+    <ng-container matColumnDef="actions">
+      <th mat-header-cell *matHeaderCellDef> 操作 </th>
+      <td mat-cell *matCellDef="let element; let i = index">
+        <mat-icon fontIcon="edit_square" (click)="editRecord(i)" class="deit"></mat-icon>
+
+        <mat-icon fontIcon="delete_forever" (click)="deleteRecord(i)" class="del"></mat-icon>
+      </td>
+    </ng-container>
+
+
+
+
+    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+    <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+  </table>
+</div>
+
+
+
+
+
+
+
+<h6>全部刪除:(console)localStorage.clear();</h6>

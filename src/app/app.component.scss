@@ -1,0 +1,31 @@
+.example-spacer {
+  flex: 1 1 auto;
+}
+
+
+
+// .mat-header-cell,
+// .mat-cell {
+//   text-align: center;
+// }
+
+.mat-icon {
+  cursor: pointer;
+  margin: 0 8px;
+  vertical-align: middle;
+}
+
+.mat-icon.deit {
+  color: #4CAF50;
+  /* 編輯圖標的顏色 */
+}
+
+.mat-icon.del {
+  color: #F44336;
+  /* 刪除圖標的顏色 */
+}
+
+.mat-icon:hover {
+  opacity: 0.7;
+  /* 當滑鼠懸停時，圖標的透明度 */
+}
